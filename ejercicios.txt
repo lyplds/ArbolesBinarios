@@ -18,4 +18,28 @@ abb(ab(N,nil,D)):- abb(D), minABB(MN,D), N=<MN.
 abb(ab(N,I,nil)) :- abb(I), maxABB(MX,I), N>=MX.
 abb(ab(N,I,D)) :- abb(I), abb(D), maxABB(MX,I), N>=MX, minABB(MN,D), N=<MN.
 
-/--------------------------------------------------------------------------
+/--------------------------------------------------------------------------/
+
+Ejercicio 2)
+
+concat([],Y,Y).
+concat([X|Xs],Y,[X|Z]):- concat(Xs,Y,Z).
+
+list_to_ABB([],nil).
+list_to_ABB(Xs,a(N,I,D)):- 
+    concat(IS,[N|DS],Xs), 
+    list_to_ABB(IS,I), list_to_ABB(DS,D).
+
+/--------------------------------------------------------------------------/
+
+Ejercicio 3)
+
+abbal(nil,0).
+abbal(a(_,I,D),H) :- 
+    abbal(I,HI), abbal(D,HD), 
+    abs(HI-HD,Hs), Hs=<1, 
+    max(HI,HD,X), H is X+1.
+
+/--------------------------------------------------------------------------/
+
+
