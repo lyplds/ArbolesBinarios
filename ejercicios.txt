@@ -15,6 +15,7 @@ minABB(Z,ab(X,_,D)):-minABB(MinD,D), min(MinD,X,Z).
 abb(nil).
 abb(ab(_,nil,nil)).
 abb(ab(N,nil,D)):- abb(D), minABB(MN,D), N=<MN.
+
 abb(ab(N,I,nil)) :- abb(I), maxABB(MX,I), N>=MX.
 abb(ab(N,I,D)) :- abb(I), abb(D), maxABB(MX,I), N>=MX, minABB(MN,D), N=<MN.
 
@@ -27,8 +28,9 @@ concat([X|Xs],Y,[X|Z]):- concat(Xs,Y,Z).
 
 list_to_ABB([],nil).
 list_to_ABB(Xs,a(N,I,D)):- 
-    concat(IS,[N|DS],Xs), 
-    list_to_ABB(IS,I), list_to_ABB(DS,D).
+     list_to_ABB(IS,I), 
+     list_to_ABB(DS,D),
+     concat(IS,[N|DS],Xs).
 
 /--------------------------------------------------------------------------/
 
