@@ -1,0 +1,21 @@
+Ejercicio 1)
+
+max(X,Y,X):- X>=Y.
+max(X,Y,Y):- X<Y.
+
+maxABB(X,ab(X,nil,_)).
+maxABB(Z,ab(X,I,_)):-maxABB(MaxI,I), max(MaxI,X,Z).
+
+min(X,Y,X):- X=<Y.
+min(X,Y,Y):- X>Y.
+
+minABB(X,ab(X,_,nil)).
+minABB(Z,ab(X,_,D)):-minABB(MinD,D), min(MinD,X,Z).
+
+abb(nil).
+abb(ab(_,nil,nil)).
+abb(ab(N,nil,D)):- abb(D), minABB(MN,D), N=<MN.
+abb(ab(N,I,nil)) :- abb(I), maxABB(MX,I), N>=MX.
+abb(ab(N,I,D)) :- abb(I), abb(D), maxABB(MX,I), N>=MX, minABB(MN,D), N=<MN.
+
+/--------------------------------------------------------------------------
