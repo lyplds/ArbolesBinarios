@@ -37,7 +37,7 @@ list_to_ABB(Xs,a(N,I,D)):-
 Ejercicio 3)
 
 abbal(nil,0).
-abbal(a(_,I,D),H) :- 
+abbal(ab(_,I,D),H) :- 
     abbal(I,HI), abbal(D,HD), 
     abs(HI-HD,Hs), Hs=<1, 
     max(HI,HD,X), H is X+1.
