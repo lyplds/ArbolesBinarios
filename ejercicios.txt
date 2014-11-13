@@ -1,4 +1,4 @@
-Ejercicio 1)
+%Ejercicio 1)
 
 max(X,Y,X):- X>=Y.
 max(X,Y,Y):- X<Y.
@@ -19,22 +19,22 @@ abb(ab(N,nil,D)):- abb(D), minABB(MN,D), N=<MN.
 abb(ab(N,I,nil)) :- abb(I), maxABB(MX,I), N>=MX.
 abb(ab(N,I,D)) :- abb(I), abb(D), maxABB(MX,I), N>=MX, minABB(MN,D), N=<MN.
 
-/--------------------------------------------------------------------------/
+%/--------------------------------------------------------------------------/
 
-Ejercicio 2)
+%Ejercicio 2)
 
 concat([],Y,Y).
 concat([X|Xs],Y,[X|Z]):- concat(Xs,Y,Z).
 
 list_to_ABB([],nil).
-list_to_ABB(Xs,a(N,I,D)):- 
+list_to_ABB(Xs,ab(N,I,D)):- 
      list_to_ABB(IS,I), 
      list_to_ABB(DS,D),
      concat(IS,[N|DS],Xs).
 
-/--------------------------------------------------------------------------/
+%/--------------------------------------------------------------------------/
 
-Ejercicio 3)
+%Ejercicio 3)
 
 abbal(nil,0).
 abbal(ab(_,I,D),H) :- 
@@ -42,6 +42,12 @@ abbal(ab(_,I,D),H) :-
     abs(HI-HD,Hs), Hs=<1, 
     max(HI,HD,X), H is X+1.
 
-/--------------------------------------------------------------------------/
+%/--------------------------------------------------------------------------/
 
+%Ejercicio 4)
+
+list_to_avl([],nil).
+list_to_avl(Xs,A):- abbal(A,_),list_to_ABB(Xs,A).
+
+%/--------------------------------------------------------------------------/
 
