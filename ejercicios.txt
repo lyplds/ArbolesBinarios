@@ -28,9 +28,9 @@ concat([X|Xs],Y,[X|Z]):- concat(Xs,Y,Z).
 
 list_to_ABB([],nil).
 list_to_ABB(Xs,ab(N,I,D)):- 
+     concat(IS,[N|DS],Xs),
      list_to_ABB(IS,I), 
-     list_to_ABB(DS,D),
-     concat(IS,[N|DS],Xs).
+     list_to_ABB(DS,D).
 
 %/--------------------------------------------------------------------------/
 
