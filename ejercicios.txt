@@ -47,8 +47,21 @@ abbal(ab(_,I,D),H) :- dif(H,HI,HD), abbal(I,HI), abbal(D,HD).
 
 %Ejercicio 4)
 
+
+%Ejercicio 4)
+
+longitud([],0).
+longitud([_|T],N):-longitud(T,N0), N is N0 + 1.
+
+h_avl(H,L) :- H is ceil(log10(L)/log10(2)).
+h_avl(H,L) :- H is ceil(log10(L)/log10(2)) + 1.
+
 list_to_avl([],nil).
-list_to_avl(Xs,A):- abbal(A,_),list_to_ABB(Xs,A).
+list_to_avl(Xs,A):- 
+    longitud(Xs,L),
+    L>0,
+    h_avl(H,L), 
+    abbal(A,H), list_to_ABB(Xs,A).
 
 %/--------------------------------------------------------------------------/
 
