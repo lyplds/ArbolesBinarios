@@ -36,11 +36,12 @@ list_to_ABB(Xs,ab(N,I,D)):-
 
 %Ejercicio 3)
 
+dif(H,I,D) :- H > 0, I is H-1, D is H-1.
+dif(H,I,D) :- H > 1, I is H-2, D is H-1.
+dif(H,I,D) :- H > 1, I is H-1, D is H-2.
+
 abbal(nil,0).
-abbal(ab(_,I,D),H) :- 
-    abbal(I,HI), abbal(D,HD), 
-    abs(HI-HD,Hs), Hs=<1, 
-    max(HI,HD,X), H is X+1.
+abbal(ab(_,I,D),H) :- dif(H,HI,HD), abbal(I,HI), abbal(D,HD).
 
 %/--------------------------------------------------------------------------/
 
