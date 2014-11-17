@@ -44,10 +44,6 @@ abbal(nil,0).
 abbal(ab(_,I,D),H) :- dif(H,HI,HD), abbal(I,HI), abbal(D,HD).
 
 %/--------------------------------------------------------------------------/
-
-%Ejercicio 4)
-
-
 %Ejercicio 4)
 
 longitud([],0).
